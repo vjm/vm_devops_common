@@ -1,0 +1,10 @@
+name             'postgres_data_server'
+maintainer       'Vince Montalbano'
+maintainer_email 'vince.montalbano@gmail.com'
+license          'All rights reserved'
+description      'Installs/configures postgres.'
+long_description 'Installs/configures postgres.'
+version          '0.1.0'
+
+depends 'devops_base', '>= 0.1.0'
+depends 'postgresql'

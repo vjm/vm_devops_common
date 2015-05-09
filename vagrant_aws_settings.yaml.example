@@ -1,0 +1,37 @@
+# AWS user access settings
+user:
+  # See the IAM section in the AWS console to create key credentials
+  access_key_id: <key_id>
+  secret_access_key: <key>
+
+  # Create a keypair in the dev account; recommended naming convention, dev-<myname>
+  keypair_name: dev-username
+
+  # When you create the keypair you will download a private key file; it's path goes here
+  private_key_path: /Users/username/.ssh/awsdev-username.pem
+
+  # Your name is used for naming and tagging AWS resources
+  short_name: username
+  full_name: User Name
+  email: username@gmail.com
+
+# Settings for creating the AWS virtual machines (defaults for all of these generally work)
+vm:
+  # The region must contain the subnet ID
+  region: us-west-2
+
+  # Subnets and security groups that are specific to the app and data instances (borrowed
+  # from the M4 DEV stack)
+  app:
+    subnet_id: subnet-a12345bc
+    security_group_ids:
+      - sg-a12345bc # App security group
+  data:
+    subnet_id: subnet-d67890ef
+    security_group_ids:
+      - sg-g12345h6 # Database security group
+
+  # You must change this AMI if you select another region
+  ami: ami-12abc345
+  username: ubuntu
+  instance_type: t2.medium

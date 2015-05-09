@@ -1,0 +1,7 @@
+# Development Workflow
+*.sublime-workspace
+
+# Devops
+Berksfile.lock
+.vagrant
+vagrant_aws_settings.yaml

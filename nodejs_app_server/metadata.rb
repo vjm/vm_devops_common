@@ -1,0 +1,10 @@
+name             'nodejs_app_server'
+maintainer       'Vince Montalbano'
+maintainer_email 'vince.montalbano@gmail.com'
+license          'All rights reserved'
+description      'Installs/configures nodejs.'
+long_description 'Installs/configures nodejs.'
+version          '0.1.0'
+
+depends 'devops_base', '>= 0.1.0'
+depends 'nodejs', '~2.4'

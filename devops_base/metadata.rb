@@ -1,0 +1,11 @@
+name             'devops_base'
+maintainer       'Vince Montalbano'
+maintainer_email 'vince.montalbano@gmail.com'
+license          'All rights reserved'
+description      'Installs/configures base system settings.'
+long_description 'Installs/configures base system settings.'
+version          '0.1.0'
+
+depends 'apt'
+depends 'yum'
+depends 'vim'

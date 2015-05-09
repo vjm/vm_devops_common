@@ -1,0 +1,12 @@
+name             'rails_app_server'
+maintainer       'Vince Montalbano'
+maintainer_email 'vince.montalbano@gmail.com'
+license          'All rights reserved'
+description      'Installs/configures rails.'
+long_description 'Installs/configures rails.'
+version          '0.1.0'
+
+depends 'devops_base', '>= 0.1.0'
+depends 'nodejs_app_server', '>= 0.1.0'
+depends 'ruby_build'
+depends 'rbenv'
