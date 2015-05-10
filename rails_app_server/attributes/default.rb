@@ -28,3 +28,5 @@
 #
 
 default[:rails_app_server][:ruby_version] = "2.1.4"
+
+default[:rails_app_server][:rails_template] = false

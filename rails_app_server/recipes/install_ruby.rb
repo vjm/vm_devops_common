@@ -31,10 +31,10 @@ include_recipe "ruby_build"
 include_recipe "rbenv::system"
 include_recipe "rbenv::vagrant" if node[:devops_base][:vagrant]
 
-# OS Dendencies
-# %w(libpq-dev).each do |pkg|
-#   package pkg
-# end
+OS Dendencies
+%w(libpq-dev).each do |pkg|
+  package pkg
+end
 
 
 rbenv_ruby node[:rails_app_server][:ruby_version] do

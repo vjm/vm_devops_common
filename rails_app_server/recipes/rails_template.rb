@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 # Cookbook Name:: rails_app_server
-# Recipe:: default
+# Recipe:: rails_template
 #
 # The MIT License (MIT)
 
@@ -26,10 +26,31 @@
 # SOFTWARE.
 #
 
-include_recipe "devops_base::default"
+cookbook_file "Gemfile" do
+    action :create_if_missing
+    path "#{node[:devops_base][:app_directory]}/Gemfile"
+end
 
-include_recipe "nodejs_app_server::default" # we include this to guarantee a javascript runtime.
+directory "#{node[:devops_base][:app_directory]}/tmp/" do
+    action :create_if_missing
+end
 
-include_recipe "rails_app_server::install_ruby"
+rails_template_location = "#{node[:devops_base][:app_directory]}/tmp/rails_template.rb"
 
-include_recipe "rails_app_server::rails_template" if node[:rails_app_server][:rails_template]
+cookbook_file "rails_template.rb" do
+    owner 'root'
+    group 'root'
+    mode '0755'
+    action :create
+    path rails_template_location
+end
+
+# bash "set up base rails app" do
+#   cwd node[:devops_base][:app_directory]
+#   code <<-EOH
+# bundle exec rails new . -m #{rails_template_location}
+# EOH
+#   only_if { ::File.exists?(rails_template_location) }
+# end
+
+# include_recipe 'rails_app_server::install_app_dependencies'
