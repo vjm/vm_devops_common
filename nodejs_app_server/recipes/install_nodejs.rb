@@ -30,4 +30,9 @@ include_recipe "nodejs::nodejs_from_source"
 
 nodejs_npm 'grunt-cli'
 nodejs_npm 'bower'
+
+# OS Dendencies
+%w(libfontconfig).each do |pkg|
+  package pkg
+end
 nodejs_npm 'phantomjs'
