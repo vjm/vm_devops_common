@@ -1,6 +1,6 @@
 # Development Workflow
 *.sublime-workspace
-.env
+.env*
 .project
 
 # Devops

@@ -5,10 +5,10 @@ defaults: &postgres_defaults
   encoding: unicode
   reconnect: false
   pool: 5
-  username: <%%= POSTGRES_USERNAME %>
-  password: <%%= POSTGRES_PASSWORD %>
+  username: <%%= ENV['POSTGRES_USERNAME'] %>
+  password: <%%= ENV['POSTGRES_PASSWORD'] %>
   database: <%= "#{@database_name}_development" %>
-  host: <%%= POSTGRES_HOST %>
+  host: <%%= ENV['POSTGRES_HOST'] %>
   port: 5432
 
 development:

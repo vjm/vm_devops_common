@@ -91,7 +91,7 @@ say_recipe 'Cucumber'
 
 @configs[@current_recipe] = config
 
-gem 'cucumber-rails', :group => [:development, :test]
+gem 'cucumber-rails', :group => [:development, :test], :require => false
 gem 'capybara', :group => [:development, :test]
 
 after_bundler do
