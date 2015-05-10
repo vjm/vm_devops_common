@@ -31,7 +31,7 @@ include_recipe "ruby_build"
 include_recipe "rbenv::system"
 include_recipe "rbenv::vagrant" if node[:devops_base][:vagrant]
 
-OS Dendencies
+# OS Dendencies
 %w(libpq-dev).each do |pkg|
   package pkg
 end
