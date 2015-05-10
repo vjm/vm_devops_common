@@ -29,10 +29,10 @@
 
 bash "install_bower_dependencies" do
   # user "vagrant"
-  cwd node[:devops_base][:app_directory]
+  cwd "/#{node[:devops_base][:app_name]}"
   # https://github.com/bower/bower/issues/1102#issuecomment-37298099
   code <<-EOH
 bower install | xargs echo
 EOH
-  only_if { ::File.exists?(node[:devops_base][:app_directory] + "/bower.json") }
+  only_if { ::File.exists?("/#{node[:devops_base][:app_name]}/bower.json") }
 end

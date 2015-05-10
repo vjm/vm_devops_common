@@ -71,6 +71,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
 
+  app_name = "app"
+
   # Chef custom JSON for VMs
   chef_json = {
     # nodejs: {
@@ -80,17 +82,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #     }
     # },
     # rails_app_server: {
+    #     # rails_template: true,
     #     ruby_version: "2.1.4"
     # },
-    # postgresql: {
-    #     password: {
-    #         postgres: "postgres_password_override"
-    #     }
-    # },
+    postgresql: {
+        username: 'postgres',
+        host: 'postgres-data-server1',
+        password: {
+            postgres: SecureRandom.hex(10)
+        }
+    },
     devops_base: {
         vagrant: true,
         stack_name: "vagrant-#{aws_cfg['user']['short_name']}",
-        app_directory: "/app"
+        app_name: app_name
     }
   }
 
@@ -106,6 +111,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe "postgres_data_server::default"
       chef.json = chef_json
     end
+    config.vm.synced_folder ".", "/#{app_name}" # this is necessary to write the .env file properly.
   end
 
   config.vm.define :devops_base do |db|
@@ -134,6 +140,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe "nodejs_app_server::default"
       chef.json = chef_json
     end
+    config.vm.synced_folder ".", "/#{app_name}" # this is necessary to write the .env file properly.
   end
 
   config.vm.define :rails_app_server do |db|
@@ -148,5 +155,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe "rails_app_server::default"
       chef.json = chef_json
     end
+    config.vm.synced_folder ".", "/#{app_name}" # this is necessary to write the .env file properly.
   end
 end

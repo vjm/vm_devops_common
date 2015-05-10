@@ -1,0 +1,30 @@
+#encoding: utf-8
+
+defaults: &postgres_defaults
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  pool: 5
+  username: <%%= POSTGRES_USERNAME %>
+  password: <%%= POSTGRES_PASSWORD %>
+  database: <%= "#{@database_name}_development" %>
+  host: <%%= POSTGRES_HOST %>
+  port: 5432
+
+development:
+  <<: *postgres_defaults
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *postgres_defaults
+  database: <%= "#{@database_name}_test" %>
+
+staging:
+  <<: *postgres_defaults
+  database: <%= "#{@database_name}_staging" %>
+
+production:
+  <<: *postgres_defaults
+  database: <%= "#{@database_name}" %>

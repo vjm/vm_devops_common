@@ -32,4 +32,4 @@ default[:devops_base][:vagrant] = false
 
 default[:devops_base][:stack_name] = "unknown"
 
-default[:devops_base][:app_directory] = "/app"
+default[:devops_base][:app_name] = "app"

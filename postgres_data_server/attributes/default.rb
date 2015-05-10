@@ -28,4 +28,13 @@
 #
 
 
-default['postgresql']['password']['postgres'] = 'fba7a868ea94c9d98ebd272b4d16e0cc' # echo -n 'postgres_default_password''postgres' | openssl md5 | sed -e 's/.* /md5/'
+default['postgresql']['password']['postgres'] = 'default_password'
+
+default['postgresql']['config']['listen_addresses'] = '*'
+default['postgresql']['pg_hba'] = [
+    {:comment => '# Optional comment', :type => 'local', :db => 'all', :user => 'all', :addr => nil, :method => 'trust'},
+    {:comment => '# Optional comment', :type => 'host', :db => 'all', :user => 'all', :addr => '127.0.0.1/32', :method => 'trust'},
+    {:comment => '# Optional comment', :type => 'host', :db => 'all', :user => 'all', :addr => '::1/128', :method => 'trust'},
+    {:comment => '# Optional comment', :type => 'host', :db => 'all', :user => 'all', :addr => '192.168.0.1/8', :method => 'trust'},
+    {:comment => '# Optional comment', :type => 'host', :db => 'all', :user => 'all', :addr => '0.0.0.0/0', :method => 'md5'}
+]

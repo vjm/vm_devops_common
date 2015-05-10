@@ -1,7 +1,8 @@
 # encoding: UTF-8
 #
-# Cookbook Name:: rails_app_server
-# Recipe:: setup_database
+# Cookbook Name:: postgres_data_server
+# Recipe:: save_env_variables
+#
 #
 # The MIT License (MIT)
 
@@ -26,21 +27,24 @@
 # SOFTWARE.
 #
 
-directory "/#{node[:devops_base][:app_name]}/config/" do
-    action :create
-end
+env_file = "/#{node[:devops_base][:app_name]}/.env"
 
-template "database.yml" do
+file env_file do
     action :create_if_missing
-    variables({
-        database_name: node[:devops_base][:app_name]
-    })
-    path "/#{node[:devops_base][:app_name]}/config/database.yml"
 end
 
-# rbenv_script "rake_db_create_migrate_seed" do
-#   rbenv_version node[:rails_app_server][:ruby_version]
-#   cwd           "/#{node[:devops_base][:app_name]}"
-#   code          "bundle exec rake db:create db:migrate db:seed"
-#   only_if { ::File.exists?("/#{node[:devops_base][:app_name]}" + "/Rakefile") && ::File.exists?("/#{node[:devops_base][:app_name]}" + "/config/database.yml") }
-# end
+postgres_password_line = "POSTGRES_PASSWORD=#{node['postgresql']['password']['postgres']}"
+postgres_username_line = "POSTGRES_USERNAME=#{node['postgresql']['username']}"
+postgres_host_line = "POSTGRES_HOST=#{node['postgresql']['host']}"
+
+ruby_block "insert postgres data in env_file" do
+  block do
+    file = Chef::Util::FileEdit.new(env_file)
+    file.insert_line_if_no_match(/POSTGRES_PASSWORD/, postgres_password_line)
+    file.insert_line_if_no_match(/#{postgres_username_line}/, postgres_username_line)
+    file.insert_line_if_no_match(/#{postgres_host_line}/, postgres_host_line)
+    file.write_file
+  end
+end
+
+

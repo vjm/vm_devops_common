@@ -154,6 +154,14 @@ end
 
 @current_recipe = nil
 
+# >-----------------------------[ Env ]-------------------------------<
+
+gem 'dotenv-rails', :group => [:development, :test]
+
+# >-----------------------------[ Remove unncessary gems ]-------------------------------<
+
+gsub_file 'Gemfile', "gem 'sass-rails'", "# gem 'sass-rails'"
+
 # >-----------------------------[ Run Bundler ]-------------------------------<
 
 say_wizard "Running Bundler install. This will take a while."

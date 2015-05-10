@@ -28,9 +28,9 @@
 
 rbenv_script "bundle_install" do
   rbenv_version node[:rails_app_server][:ruby_version]
-  cwd           node[:devops_base][:app_directory]
+  cwd           "/#{node[:devops_base][:app_name]}"
   code          "bundle install"
-  only_if { ::File.exists?(node[:devops_base][:app_directory] + "/Gemfile") }
+  only_if { ::File.exists?("/#{node[:devops_base][:app_name]}/Gemfile") }
 end
 
 directory "/usr/local/rbenv" do

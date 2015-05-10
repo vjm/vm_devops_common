@@ -28,14 +28,14 @@
 
 cookbook_file "Gemfile" do
     action :create_if_missing
-    path "#{node[:devops_base][:app_directory]}/Gemfile"
+    path "/#{node[:devops_base][:app_name]}/Gemfile"
 end
 
-directory "#{node[:devops_base][:app_directory]}/tmp/" do
+directory "/#{node[:devops_base][:app_name]}/tmp/" do
     action :create_if_missing
 end
 
-rails_template_location = "#{node[:devops_base][:app_directory]}/tmp/rails_template.rb"
+rails_template_location = "/#{node[:devops_base][:app_name]}/tmp/rails_template.rb"
 
 cookbook_file "rails_template.rb" do
     owner 'root'
@@ -46,7 +46,7 @@ cookbook_file "rails_template.rb" do
 end
 
 # bash "set up base rails app" do
-#   cwd node[:devops_base][:app_directory]
+#   cwd "/#{node[:devops_base][:app_name]}"
 #   code <<-EOH
 # bundle exec rails new . -m #{rails_template_location}
 # EOH
