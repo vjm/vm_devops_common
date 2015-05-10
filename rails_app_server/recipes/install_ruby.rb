@@ -48,6 +48,10 @@ rbenv_gem "bundler" do
   action          :install
 end
 
+# bash "automatic rbenv rehashing" do
+#     code "git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash"
+# end
+
 # Add Github as known host
 # ssh_known_hosts_entry 'github.com'
 # ssh_known_hosts_entry 'bitbucket.org'
