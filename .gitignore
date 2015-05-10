@@ -1,5 +1,7 @@
 # Development Workflow
 *.sublime-workspace
+.env
+.project
 
 # Devops
 Berksfile.lock
