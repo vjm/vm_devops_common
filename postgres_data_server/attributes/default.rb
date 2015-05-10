@@ -28,4 +28,4 @@
 #
 
 
- default['postgresql']['password']['postgres'] = 'fba7a868ea94c9d98ebd272b4d16e0cc' # echo -n 'postgres_default_password''postgres' | openssl md5 | sed -e 's/.* /md5/'
+default['postgresql']['password']['postgres'] = 'fba7a868ea94c9d98ebd272b4d16e0cc' # echo -n 'postgres_default_password''postgres' | openssl md5 | sed -e 's/.* /md5/'
