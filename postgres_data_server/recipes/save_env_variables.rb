@@ -37,14 +37,27 @@ postgres_password_line = "POSTGRES_PASSWORD=#{node['postgresql']['password']['po
 postgres_username_line = "POSTGRES_USERNAME=#{node['postgresql']['username']}"
 postgres_host_line = "POSTGRES_HOST=#{node['postgresql']['host']}"
 
-ruby_block "insert postgres data in env_file" do
+ruby_block "insert postgres password in env_file" do
   block do
     file = Chef::Util::FileEdit.new(env_file)
     file.insert_line_if_no_match(/POSTGRES_PASSWORD/, postgres_password_line)
-    file.insert_line_if_no_match(/#{postgres_username_line}/, postgres_username_line)
-    file.insert_line_if_no_match(/#{postgres_host_line}/, postgres_host_line)
     file.write_file
   end
 end
 
+ruby_block "insert postgres username in env_file" do
+  block do
+    file = Chef::Util::FileEdit.new(env_file)
+    file.insert_line_if_no_match(/#{postgres_username_line}/, postgres_username_line)
+    file.write_file
+  end
+end
+
+ruby_block "insert postgres host in env_file" do
+  block do
+    file = Chef::Util::FileEdit.new(env_file)
+    file.insert_line_if_no_match(/#{postgres_host_line}/, postgres_host_line)
+    file.write_file
+  end
+end
 
