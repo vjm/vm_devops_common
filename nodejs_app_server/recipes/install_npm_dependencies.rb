@@ -28,9 +28,9 @@
 
 bash "install_npm_dependencies" do
   # user "vagrant"
-  cwd "/#{node[:devops_base][:app_name]}"
+  cwd "/#{node[:devops_base][:app_name]}/client"
   code <<-EOH
 npm install
 EOH
-  only_if { ::File.exists?("/#{node[:devops_base][:app_name]}/package.json") }
+  only_if { ::File.exists?("/#{node[:devops_base][:app_name]}/client/package.json") }
 end
