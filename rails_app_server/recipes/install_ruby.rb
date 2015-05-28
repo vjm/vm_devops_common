@@ -32,7 +32,7 @@ include_recipe "rbenv::system"
 include_recipe "rbenv::vagrant" if node[:devops_base][:vagrant]
 
 # OS Dendencies
-%w(libpq-dev).each do |pkg|
+%w(libpq-dev libxml2 libmysqlclient-dev libevent-dev zlib1g-dev liblzma-dev libxml2-dev libxslt-dev).each do |pkg|
   package pkg
 end
 
