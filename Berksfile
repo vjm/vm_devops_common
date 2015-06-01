@@ -19,3 +19,7 @@ cookbook 'rbenv', git: "git@github.com:fnichol/chef-rbenv.git"
 # nodejs_app_server
 cookbook 'nodejs_app_server', path: 'nodejs_app_server'
 cookbook 'nodejs', '~2.4'
+
+# jenkins_app_server
+cookbook 'jenkins_app_server', path: 'jenkins_app_server'
+cookbook 'jenkins'

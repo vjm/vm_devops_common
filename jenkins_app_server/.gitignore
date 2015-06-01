@@ -1,0 +1,32 @@
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+pkg/
+
+# Berkshelf
+.vagrant
+/cookbooks
+Berksfile.lock
+
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
+
+Gemfile.lock
+.DS_Store
+node_modules
+*.zip
+builds/
+*.sublime-workspace
+packer/packer_cache/
+
+# This has been included so that updates to sublime project file aren't committed to the repo.
+# *.sublime-project
+Berksfile.lock
