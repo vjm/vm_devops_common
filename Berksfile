@@ -8,7 +8,7 @@ cookbook 'vim'
 
 # postgres_data_server
 cookbook 'postgres_data_server', path: 'postgres_data_server'
-cookbook 'postgresql', '~> 3.4'
+cookbook 'postgresql', '~> 3.4.0'
 
 # rails_app_server
 cookbook 'rails_app_server', path: 'rails_app_server'
@@ -18,4 +18,4 @@ cookbook 'rbenv', git: "git@github.com:fnichol/chef-rbenv.git"
 
 # nodejs_app_server
 cookbook 'nodejs_app_server', path: 'nodejs_app_server'
-cookbook 'nodejs', '~> 2.4'
+cookbook 'nodejs', '~> 2.4.0'
