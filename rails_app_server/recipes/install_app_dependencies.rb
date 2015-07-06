@@ -28,10 +28,12 @@
 
 bash "bitbucket ssh keycheck" do
   code "ssh -Tv git@bitbucket.org -o StrictHostKeyChecking=no"
+  ignore_failure true
 end
 
 bash "github ssh keycheck" do
   code "ssh -Tv git@github.com -o StrictHostKeyChecking=no"
+  ignore_failure true
 end
 
 rbenv_script "bundle_install" do
