@@ -26,6 +26,14 @@
 # SOFTWARE.
 #
 
+bash "bitbucket ssh keycheck" do
+  code "ssh -Tv git@bitbucket.org -o StrictHostKeyChecking=no"
+end
+
+bash "github ssh keycheck" do
+  code "ssh -Tv git@github.com -o StrictHostKeyChecking=no"
+end
+
 rbenv_script "bundle_install" do
   rbenv_version node[:rails_app_server][:ruby_version]
   cwd           "/#{node[:devops_base][:app_name]}"
